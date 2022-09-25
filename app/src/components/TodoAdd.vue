@@ -30,12 +30,14 @@ export default {
 .container span {
   border-radius: 50%;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   height: 20px;
   width: 20px;
   border: 1px solid #4d5066;
-  display: inline-block;
   margin-right: 10px;
+  background-color: #b692fc;
+  align-items: center;
+  justify-content: center;
 }
 .container .create-todo {
   display: flex;
