@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <span>2 items left</span>
+    <span>{{ numberOfTask }} items left</span>
     <div class="filters">
       <TodoFiltersButton />
     </div>
@@ -9,11 +9,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import TodoFiltersButton from "./TodoFiltersButton.vue";
 export default {
   name: "TodoItemFooter",
   components: {
     TodoFiltersButton,
+  },
+  computed: {
+    ...mapGetters(["numberOfTask"]),
   },
 };
 </script>

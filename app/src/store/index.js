@@ -7,7 +7,11 @@ export default new Vuex.Store({
   state: {
     tasks: [],
   },
-  getters: {},
+  getters: {
+    numberOfTask(state) {
+      return state.tasks.length;
+    },
+  },
   mutations: {
     ADD(state, payload) {
       state.tasks.push(payload);
