@@ -81,7 +81,7 @@ export default {
 .container input {
   border: none;
   color: #484b6a;
-  font-size: 18px;
+  font-size: 1.125em;
   outline: none;
   padding: 5px;
   width: 100%;

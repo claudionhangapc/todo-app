@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content">
         <h1>Todo</h1>
-        <span><img src="@/assets/icon-moon.svg" alt="" /></span>
+        <span id="mode"><img src="@/assets/icon-moon.svg" alt="" /></span>
       </div>
       <TodoAdd />
     </div>
@@ -53,8 +53,11 @@ export default {
 
 .header .content h1 {
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 2.5em;
   color: #fafafa;
   font-weight: 700;
+}
+#mode {
+  cursor: pointer;
 }
 </style>

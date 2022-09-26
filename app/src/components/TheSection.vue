@@ -2,6 +2,7 @@
   <div class="container">
     <div class="content">
       <TodoList />
+      <p class="footer">Desenvolvido por Cláudio</p>
     </div>
   </div>
 </template>
@@ -32,5 +33,10 @@ export default {
   margin-right: auto;
   margin-left: auto;
   margin-top: -25px;
+}
+.footer {
+  font-size: 1.125em;
+  margin-top: 40px;
+  color: #2c3e50;
 }
 </style>
