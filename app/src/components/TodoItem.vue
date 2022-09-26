@@ -1,6 +1,7 @@
 <template>
   <div
     class="container"
+    :class="darkMode ? 'bg-dark' : 'bg-light'"
     @mouseenter="activeHover = true"
     @mouseleave="activeHover = false"
   >
@@ -13,7 +14,7 @@
       <p v-if="task.completed" class="completed-task-name">
         <s>{{ task.name }}</s>
       </p>
-      <p v-else>
+      <p v-else class="not-completed-task-name">
         {{ task.name }}
       </p>
     </div>
@@ -23,7 +24,7 @@
 
 <script>
 import TodoDeleteItemButton from "./TodoDeleteItemButton.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "TodoItem",
   props: {
@@ -39,6 +40,9 @@ export default {
     return {
       activeHover: false,
     };
+  },
+  computed: {
+    ...mapState(["darkMode"]),
   },
   methods: {
     ...mapActions(["update"]),
@@ -68,10 +72,15 @@ export default {
   padding: 10px 20px;
   position: relative;
   transition: 0.3s;
+}
+.bg-dark {
+  background-color: #25273c;
+  border-bottom: 1px solid #4d5066;
+}
+.bg-light {
   background-color: #fff;
   border-bottom: 1px solid #9394a5;
 }
-
 .container span {
   border-radius: 50%;
   cursor: pointer;
@@ -89,7 +98,10 @@ export default {
 }
 
 .completed-task-name {
-  color: #9394a5;
+  color: #d1d5db;
+}
+.not-completed-task-name {
+  color: #4b5563;
 }
 
 .container .create-todo {

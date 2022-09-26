@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div
+    class="container-input"
+    :style="{ 'background-color': darkMode ? '#25273c' : '#fff' }"
+  >
     <span @click="setCompletedValue()" :class="completed ? 'completed' : ''"
       ><img v-if="completed" src="@/assets/icon-check.svg" alt=""
     /></span>
@@ -8,13 +11,15 @@
         placeholder="Create a new todo..."
         v-model="name"
         v-on:keyup.enter="onEnter"
+        :style="{ 'background-color': darkMode ? '#25273c' : '#fff' }"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
+
 export default {
   name: "TodoAdd",
   data() {
@@ -22,6 +27,9 @@ export default {
       name: "",
       completed: false,
     };
+  },
+  computed: {
+    ...mapState(["darkMode"]),
   },
   methods: {
     ...mapActions(["create"]),
@@ -48,7 +56,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container {
+.container-input {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -56,11 +64,10 @@ export default {
   padding: 10px 20px;
   position: relative;
   transition: 0.3s;
-  background-color: #fff;
   border-radius: 3px;
 }
 
-.container span {
+.container-input span {
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -74,11 +81,11 @@ export default {
 .completed {
   background-color: #b692fc;
 }
-.container .create-todo {
+.container-input .create-todo {
   display: flex;
   flex: 1;
 }
-.container input {
+.container-input input {
   border: none;
   color: #484b6a;
   font-size: 1.125em;

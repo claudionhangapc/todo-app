@@ -6,18 +6,23 @@
       "completed": 0
     },
     {
+      "id": 5,
       "name": "docs ",
-      "completed": 0,
-      "id": 5
+      "completed": 0
     },
     {
       "id": 6,
       "name": "teste",
-      "completed": 1
+      "completed": 0
     },
     {
       "id": 7,
       "name": "casa",
+      "completed": 1
+    },
+    {
+      "id": 8,
+      "name": "teste",
       "completed": 1
     }
   ]

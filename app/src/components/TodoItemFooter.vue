@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="darkMode ? 'bg-dark' : 'bg-light'">
     <span>{{ numberOfTask }} items left</span>
     <div class="filters">
       <TodoFiltersButton />
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import TodoFiltersButton from "./TodoFiltersButton.vue";
 export default {
   name: "TodoItemFooter",
@@ -18,6 +18,7 @@ export default {
   },
   computed: {
     ...mapGetters(["numberOfTask"]),
+    ...mapState(["darkMode"]),
   },
 };
 </script>
@@ -32,10 +33,16 @@ export default {
   padding: 15px 20px;
   position: relative;
   transition: 0.3s;
-  background-color: #fff;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   justify-content: space-between;
+}
+
+.bg-dark {
+  background-color: #25273c;
+}
+.bg-light {
+  background-color: #fff;
 }
 
 .container span {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container margin-top">
+  <div class="container margin-top" :class="darkMode ? 'bg-dark' : 'bg-light'">
     <div class="filters">
       <TodoFiltersButton />
     </div>
@@ -8,10 +8,14 @@
 
 <script>
 import TodoFiltersButton from "./TodoFiltersButton.vue";
+import { mapState } from "vuex";
 export default {
   name: "TodoItemFooterSection",
   components: {
     TodoFiltersButton,
+  },
+  computed: {
+    ...mapState(["darkMode"]),
   },
 };
 </script>
@@ -26,10 +30,16 @@ export default {
   padding: 15px 20px;
   position: relative;
   transition: 0.3s;
-  background-color: #fff;
   border-radius: 3px;
   justify-content: space-between;
   margin-top: 30px;
+}
+
+.bg-dark {
+  background-color: #25273c;
+}
+.bg-light {
+  background-color: #fff;
 }
 
 .margin-top {
