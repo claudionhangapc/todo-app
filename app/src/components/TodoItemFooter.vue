@@ -39,4 +39,10 @@ export default {
   flex: 1;
   justify-content: center;
 }
+
+@media (max-width: 576px) {
+  .container .filters {
+    display: none;
+  }
+}
 </style>

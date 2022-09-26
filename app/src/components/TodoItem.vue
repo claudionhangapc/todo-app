@@ -6,7 +6,7 @@
   >
     <span><img src="@/assets/icon-check.svg" alt="" /></span>
     <div class="create-todo">
-      <p>Lorem Ipsum é simplesmente</p>
+      <p>{{ task.name }}</p>
     </div>
     <TodoDeleteItemButton v-if="activeHover" />
   </div>
@@ -16,6 +16,12 @@
 import TodoDeleteItemButton from "./TodoDeleteItemButton.vue";
 export default {
   name: "TodoItem",
+  props: {
+    task: {
+      type: Object,
+      required: true,
+    },
+  },
   components: {
     TodoDeleteItemButton,
   },

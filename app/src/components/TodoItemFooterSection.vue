@@ -20,7 +20,7 @@ export default {
 <style scoped>
 .container {
   box-sizing: border-box;
-  display: flex;
+  display: none;
   align-items: center;
   width: 100%;
   padding: 15px 20px;
@@ -40,5 +40,11 @@ export default {
   display: flex;
   flex: 1;
   justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .container {
+    display: flex;
+  }
 }
 </style>
