@@ -1,12 +1,32 @@
 <template>
   <div class="container-delete">
-    <span><img src="@/assets/icon-cross.svg" alt="" /></span>
+    <span @click="deleteTask()"
+      ><img src="@/assets/icon-cross.svg" alt=""
+    /></span>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "TodoDeleteItemButton",
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    ...mapActions(["delete"]),
+    async deleteTask() {
+      try {
+        await this.delete(this.id);
+      } catch (err) {
+        alert("Algo inesperado aconteceu");
+        //console.log(err)
+      }
+    },
+  },
 };
 </script>
 

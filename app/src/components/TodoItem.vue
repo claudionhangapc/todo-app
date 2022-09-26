@@ -8,7 +8,7 @@
     <div class="create-todo">
       <p>{{ task.name }}</p>
     </div>
-    <TodoDeleteItemButton v-if="activeHover" />
+    <TodoDeleteItemButton v-if="activeHover" :id="task.id" />
   </div>
 </template>
 
