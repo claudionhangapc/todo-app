@@ -1,11 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "name": "Aprender js",
-      "completed": 0
-    },
-    {
       "id": 2,
       "name": "Trabalaho de fisica",
       "completed": 0
@@ -14,6 +9,11 @@
       "name": "docs ",
       "completed": 0,
       "id": 5
+    },
+    {
+      "name": "teste",
+      "completed": 1,
+      "id": 6
     }
   ]
 }

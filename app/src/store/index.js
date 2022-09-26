@@ -19,6 +19,12 @@ export default new Vuex.Store({
       const index = state.tasks.findIndex((task) => task.id === id);
       state.tasks.splice(index, 1);
     },
+    UPDATE(state, payload) {
+      const index = state.tasks.findIndex((task) => task.id === payload.id);
+      if (index !== -1) {
+        state.tasks.splice(index, 1, payload);
+      }
+    },
   },
   actions: {
     async create({ commit }, payload) {
@@ -34,6 +40,11 @@ export default new Vuex.Store({
     async delete({ commit }, id) {
       await api.delete(`/tasks/${id}`);
       commit("DELETE", id);
+    },
+    async update({ commit }, payload) {
+      const response = await api.put(`/tasks/${payload.id}`, payload);
+      const task = response.data;
+      commit("UPDATE", task);
     },
   },
   modules: {},

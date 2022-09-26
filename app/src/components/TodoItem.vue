@@ -4,7 +4,11 @@
     @mouseenter="activeHover = true"
     @mouseleave="activeHover = false"
   >
-    <span><img src="@/assets/icon-check.svg" alt="" /></span>
+    <span
+      @click="setCompletedValue()"
+      :class="task.completed ? 'completed' : ''"
+      ><img v-if="task.completed === 1" src="@/assets/icon-check.svg" alt=""
+    /></span>
     <div class="create-todo">
       <p>{{ task.name }}</p>
     </div>
@@ -14,6 +18,7 @@
 
 <script>
 import TodoDeleteItemButton from "./TodoDeleteItemButton.vue";
+import { mapActions } from "vuex";
 export default {
   name: "TodoItem",
   props: {
@@ -29,6 +34,21 @@ export default {
     return {
       activeHover: false,
     };
+  },
+  methods: {
+    ...mapActions(["update"]),
+    async setCompletedValue() {
+      try {
+        await this.update({
+          id: this.task.id,
+          name: this.task.name,
+          completed: this.task.completed ? 0 : 1,
+        });
+      } catch (err) {
+        alert("Algo inesperado aconteceu");
+        //console.log(err)
+      }
+    },
   },
 };
 </script>
@@ -55,10 +75,14 @@ export default {
   width: 20px;
   border: 1px solid #4d5066;
   margin-right: 10px;
-  background-color: #b692fc;
   align-items: center;
   justify-content: center;
 }
+
+.completed {
+  background-color: #b692fc;
+}
+
 .container .create-todo {
   display: flex;
   flex: 1;
