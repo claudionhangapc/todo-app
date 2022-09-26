@@ -37,6 +37,11 @@ export default new Vuex.Store({
       const payload = response.data;
       commit("SET", payload);
     },
+    async filter({ commit }, value) {
+      const response = await api.get(`/tasks?completed=${value}`);
+      const payload = response.data;
+      commit("SET", payload);
+    },
     async delete({ commit }, id) {
       await api.delete(`/tasks/${id}`);
       commit("DELETE", id);

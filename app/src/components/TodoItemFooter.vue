@@ -34,6 +34,10 @@ export default {
   justify-content: space-between;
 }
 
+.container span {
+  color: #9394a5;
+}
+
 .container .filters {
   display: flex;
   flex: 1;
