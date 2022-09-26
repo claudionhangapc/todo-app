@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <span><img src="@/assets/icon-check.svg" alt="" /></span>
+    <span @click="setCompletedValue()" :class="completed ? 'completed' : ''"
+      ><img v-if="completed" src="@/assets/icon-check.svg" alt=""
+    /></span>
     <div class="create-todo">
       <input
         placeholder="Create a new todo..."
@@ -18,6 +20,7 @@ export default {
   data() {
     return {
       name: "",
+      completed: false,
     };
   },
   methods: {
@@ -27,7 +30,7 @@ export default {
       try {
         await this.create({
           name: this.name,
-          completed: 0,
+          completed: this.completed ? 1 : 0,
         });
 
         this.name = "";
@@ -35,6 +38,9 @@ export default {
         alert("Algo inesperado aconteceu");
         //console.log(err)
       }
+    },
+    setCompletedValue() {
+      this.completed = !this.completed;
     },
   },
 };
@@ -62,9 +68,11 @@ export default {
   width: 20px;
   border: 1px solid #4d5066;
   margin-right: 10px;
-  background-color: #b692fc;
   align-items: center;
   justify-content: center;
+}
+.completed {
+  background-color: #b692fc;
 }
 .container .create-todo {
   display: flex;
