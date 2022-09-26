@@ -2,14 +2,41 @@
   <div class="container">
     <span><img src="@/assets/icon-check.svg" alt="" /></span>
     <div class="create-todo">
-      <input placeholder="Create a new todo..." />
+      <input
+        placeholder="Create a new todo..."
+        v-model="name"
+        v-on:keyup.enter="onEnter"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "TodoAdd",
+  data() {
+    return {
+      name: "",
+    };
+  },
+  methods: {
+    ...mapActions(["create"]),
+    async onEnter() {
+      if (this.name.length === 0) return;
+      try {
+        await this.create({
+          name: this.name,
+          completed: 0,
+        });
+
+        this.name = "";
+      } catch (err) {
+        alert("Algo inesperado aconteceu");
+        //console.log(err)
+      }
+    },
+  },
 };
 </script>
 

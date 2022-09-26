@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import { api } from "../service";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -21,12 +21,14 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    create({ commit }, payload) {
-      commit("ADD", payload);
+    async create({ commit }, payload) {
+      const response = await api.post("/tasks", payload);
+      const result = response.data;
+      commit("ADD", result);
     },
     async fetch({ commit }) {
-      const result = await fetch("http://localhost:3000/tasks");
-      const payload = await result.json();
+      const response = await api.get("/tasks");
+      const payload = response.data;
       commit("SET", payload);
     },
     delete({ commit }, id) {
