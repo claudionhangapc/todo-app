@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [],
+    darkMode: false,
   },
   getters: {
     numberOfTask(state) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
       if (index !== -1) {
         state.tasks.splice(index, 1, payload);
       }
+    },
+    UPDATE_DARK_MODE(state) {
+      state.darkMode = !state.darkMode;
     },
   },
   actions: {
@@ -54,6 +58,10 @@ export default new Vuex.Store({
       const response = await api.put(`/tasks/${payload.id}`, payload);
       const task = response.data;
       commit("UPDATE", task);
+    },
+
+    setDarkMode({ commit }) {
+      commit("UPDATE_DARK_MODE");
     },
   },
   modules: {},

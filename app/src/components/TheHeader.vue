@@ -1,9 +1,12 @@
 <template>
-  <div class="header bg-dark">
+  <div class="header bg-dark" :class="darkMode ? 'bg-dark' : 'bg-light'">
     <div class="container">
       <div class="content">
         <h1>Todo</h1>
-        <span id="mode"><img src="@/assets/icon-moon.svg" alt="" /></span>
+        <span id="mode" @click="setDarkMode()">
+          <img v-if="darkMode" src="@/assets/icon-moon.svg" alt="" />
+          <img v-else src="@/assets/icon-sun.svg" alt="" />
+        </span>
       </div>
       <TodoAdd />
     </div>
@@ -12,13 +15,17 @@
 
 <script>
 import TodoAdd from "./TodoAdd.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "TheHeader",
   components: {
     TodoAdd,
   },
-  props: {
-    msg: String,
+  computed: {
+    ...mapState(["darkMode"]),
+  },
+  methods: {
+    ...mapActions(["setDarkMode"]),
   },
 };
 </script>
