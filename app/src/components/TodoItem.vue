@@ -10,7 +10,12 @@
       ><img v-if="task.completed === 1" src="@/assets/icon-check.svg" alt=""
     /></span>
     <div class="create-todo">
-      <p>{{ task.name }}</p>
+      <p v-if="task.completed" class="completed-task-name">
+        <s>{{ task.name }}</s>
+      </p>
+      <p v-else>
+        {{ task.name }}
+      </p>
     </div>
     <TodoDeleteItemButton v-if="activeHover" :id="task.id" />
   </div>
@@ -81,6 +86,10 @@ export default {
 
 .completed {
   background-color: #b692fc;
+}
+
+.completed-task-name {
+  color: #9394a5;
 }
 
 .container .create-todo {
