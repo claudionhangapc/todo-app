@@ -5,6 +5,10 @@
 npm install
 ```
 
+### Run backend serve
+```
+npm run api_serve
+```
 ### Compiles and hot-reloads for development
 ```
 npm run serve
