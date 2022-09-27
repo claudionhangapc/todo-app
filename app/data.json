@@ -18,12 +18,12 @@
     {
       "id": 7,
       "name": "casa",
-      "completed": 1
+      "completed": 0
     },
     {
       "id": 8,
       "name": "teste",
-      "completed": 1
+      "completed": 0
     }
   ]
 }
