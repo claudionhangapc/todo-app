@@ -19,7 +19,7 @@ describe("TodoItem.vue", () => {
     })
   });
 
-  it("renders props.name when passed", () => {
+  it("renders props.task.name when passed", () => {
     const task = {
       "id": 2,
       "name": "Trabalaho de fisica",
@@ -28,4 +28,15 @@ describe("TodoItem.vue", () => {
     const wrapper = shallowMount(TodoItem, { store, localVue, propsData: { task } })
     expect(wrapper.html()).toContain('Trabalaho de fisica');
   });
+
+  it("renders props.task.name when passed", () => {
+    const task = {
+      "id": 2,
+      "name": "Trabalaho de fisica",
+      "completed": 1
+    };
+    const wrapper = shallowMount(TodoItem, { store, localVue, propsData: { task } })
+    expect(wrapper.html()).toContain('<s>Trabalaho de fisica</s>');
+  });
+
 });
