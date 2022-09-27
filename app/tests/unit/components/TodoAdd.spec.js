@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
-describe("TodoDeleteItemButton.vue", () => {
+describe("TodoAdd.vue", () => {
   let  darkMode= false;
   let store;
   let state;

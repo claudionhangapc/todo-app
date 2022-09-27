@@ -5,6 +5,7 @@
       :key="filter.id"
       :class="filterBy === filter.id ? 'filter-by' : 'filter'"
       @click="filterData(filter.id)"
+      :id="filter.id"
       >{{ filter.name }}</span
     >
   </div>
@@ -28,7 +29,7 @@ export default {
     ...mapActions(["filter", "fetch"]),
     async filterData(value) {
       if (value === this.filterBy) {
-        return;
+        //return;
       } else {
         this.filterBy = value;
       }
