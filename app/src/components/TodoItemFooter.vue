@@ -4,12 +4,12 @@
     <div class="filters">
       <TodoFiltersButton />
     </div>
-    <span>Clear completed</span>
+    <span @click="filterData()">Clear completed</span>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
 import TodoFiltersButton from "./TodoFiltersButton.vue";
 export default {
   name: "TodoItemFooter",
@@ -19,6 +19,17 @@ export default {
   computed: {
     ...mapGetters(["numberOfTask"]),
     ...mapState(["darkMode"]),
+  },
+  methods: {
+    ...mapActions(["filter"]),
+    async filterData() {
+      try {
+        await this.filter(0);
+      } catch (err) {
+        alert("Algo inesperado aconteceu");
+        //console.log(err)
+      }
+    },
   },
 };
 </script>
@@ -47,6 +58,7 @@ export default {
 
 .container span {
   color: #9394a5;
+  cursor: pointer;
 }
 
 .container .filters {
