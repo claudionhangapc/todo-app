@@ -8,6 +8,7 @@
     /></span>
     <div class="create-todo">
       <input
+        id="task_name"
         placeholder="Create a new todo..."
         v-model="name"
         v-on:keyup.enter="onEnter"

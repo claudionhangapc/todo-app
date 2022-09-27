@@ -40,4 +40,31 @@ describe("TodoDeleteItemButton.vue", () => {
     expect(wrapper.html()).toContain('@/assets/icon-check.svg');
   });
 
+  it("calls store action create when onEnter function is executed", () => {
+    const data = function(){
+      return {
+        name: "",
+        completed: true,
+      }
+    }
+    const wrapper = shallowMount(TodoAdd, { store, localVue, data})
+    const input = wrapper.find('#task_name');
+    input.setValue('Comprar pão');
+    input.trigger('keyup.enter');
+    expect(actions.create).toHaveBeenCalled()
+  });
+
+  it("dont create task if name is empty", () => {
+    const data = function(){
+      return {
+        name: "",
+        completed: true,
+      }
+    }
+    const wrapper = shallowMount(TodoAdd, { store, localVue, data})
+    const input = wrapper.find('#task_name');
+    input.trigger('keyup.enter');
+    expect(actions.create).not.toHaveBeenCalled()
+  });
+
 });
